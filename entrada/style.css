@@ -1,13 +1,15 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     display: flex;
     align-items: center;
 }
-form{
+
+form {
     width: 400px;
     display: flex;
     justify-content: space-around;
