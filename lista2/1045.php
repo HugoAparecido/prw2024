@@ -1,6 +1,6 @@
 <?php
 list($A, $B, $C) = explode(' ', readline());
-$maior = $A > $B ? ($A > $B ? $A : $B) : ($B > $B ? $B : $B);
+$maior = $A > $B ? ($A > $C ? $A : $C) : ($B > $C ? $B : $C);
 if ($A == $maior)
     $A = $maior;
 elseif ($B == $maior) {
