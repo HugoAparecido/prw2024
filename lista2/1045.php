@@ -18,7 +18,7 @@ elseif ($A ** 2 > $B ** 2 + $C ** 2)
     echo "TRIANGULO OBTUSANGULO\n";
 elseif ($A ** 2 < $B ** 2 + $C ** 2)
     echo "TRIANGULO ACUTANGULO\n";
-if ($A == $B && $A == $C)
+if ($A == $B && $A == $C && $B == $C)
     echo "TRIANGULO EQUILATERO\n";
 elseif ($A == $B || $B == $C || $A == $C)
     echo "TRIANGULO ISOSCELES\n";
