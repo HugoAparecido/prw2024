@@ -1,5 +1,8 @@
 <?php
 list($A, $B, $C) = explode(' ', readline());
+$A=doubleval($A);
+$B=doubleval($B);
+$C=doubleval($C);
 $maior = $A > $B ? ($A > $C ? $A : $C) : ($B > $C ? $B : $C);
 if ($A == $maior)
     $A = $maior;
