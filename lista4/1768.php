@@ -9,29 +9,19 @@ while ($n = fgets(STDIN)) {
             }
             for ($c = 0; $c < $i; $c++) {
                 $stringResposta .= "*";
-            }/*
-            for ($c = 0; $c < (($numAsteriscos - $i) / 2); $c++) {
-                $stringResposta .= " ";
-            }*/
+            }
             $stringResposta .= "\n";
         }
     }
     for ($c = 0; $c < (($numAsteriscos - 1) / 2); $c++) {
         $stringResposta .= " ";
     }
-    $stringResposta .= "*";/*
-    for ($c = 0; $c < (($numAsteriscos - 1) / 2); $c++) {
-        $stringResposta .= " ";
-    }*/
+    $stringResposta .= "*";
     $stringResposta .= "\n";
     for ($c = 0; $c < (($numAsteriscos - 3) / 2); $c++) {
         $stringResposta .= " ";
     }
-    $stringResposta .= "***";/*
-    for ($c = 0; $c < (($numAsteriscos - 3) / 2); $c++) {
-        $stringResposta .= " ";
-    }*/
+    $stringResposta .= "***";
     $stringResposta .= "\n\n";
     echo "$stringResposta";
 }
-?>

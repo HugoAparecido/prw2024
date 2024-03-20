@@ -1,7 +1,9 @@
 <?php
-//ceil
 $N = intval(readline());
-while ($N != 0) {
+while (true) {
+    if ($N == 0)
+        break;
+    $resposta = "";
     $entrada = [];
     for ($i = 0; $i < $N; $i++) {
         array_push($entrada, readline());
@@ -11,11 +13,11 @@ while ($N != 0) {
         if (strlen($linha) > $maior)
             $maior = strlen($linha);
     }
-    $resposta = "\n";
     foreach ($entrada as $linha) {
         $linha = str_pad($linha, $maior, " ", STR_PAD_LEFT);
-        $resposta .= $linha . "\n";
+        echo $linha . "\n";
     }
-    echo "$resposta";
     $N = intval(readline());
+    if($N != 0)
+    echo "\n";
 }

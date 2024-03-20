@@ -1,12 +1,12 @@
 <?php
 $N = intval(readline());
-while ($N != 0) {
+while (true) {
+    if ($N == 0)
+        break;
     $entrada = [];
     for ($i = 0; $i < $N; $i++) {
         $linha = readline();
-        $linha = explode(" ", $linha);
-        $linha = array_diff($linha, [" "]);
-        $linha = implode(" ", $linha);
+        $linha = preg_replace('/\s+/', ' ', trim($linha));
         array_push($entrada, $linha);
     }
     $maior = 0;
@@ -15,7 +15,10 @@ while ($N != 0) {
             $maior = strlen($linha);
     }
     foreach ($entrada as $linha) {
+        $linha = str_pad($linha, $maior, " ", STR_PAD_LEFT);
         echo $linha . "\n";
     }
     $N = intval(readline());
+    if ($N != 0)
+        echo "\n";
 }
