@@ -1,10 +1,21 @@
 <?php
 $N = intval(readline());
+$letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 $resposta = 0;
 while ($N--) {
     list($stringInicial, $stringFinal) = explode(" ", readline());
-    for ($i = 0; $i < min(strlen($stringInicial), strlen($stringFinal)); $i++) {
-        $resposta += abs(ord($stringInicial[$i])-ord($stringFinal[$i]));
+    $stringInicial = str_split($stringInicial);
+    $stringFinal = str_split($stringFinal);
+    for ($i = 0; $i < count($stringInicial); $i++) {
+        $letra = array_search($stringInicial[$i], $letras);
+        while ($stringInicial[$i] != $stringFinal[$i]) {
+            $resposta++;
+            if ($letra == 25)
+                $letra = 0;
+            else
+                $letra++;
+            $stringInicial[$i] = $letras[$letra];
+        }
     }
     echo "$resposta\n";
     $resposta = 0;
