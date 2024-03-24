@@ -1,8 +1,11 @@
 <?php
 $C = readline();
 for ($i = 0; $i < $C; $i++) {
-    $palavra = readline();
-    $palavra = preg_replace("/(?![a-z])./", "", $palavra);
-    $palavra = strrev($palavra);
-    echo "$palavra\n";
+    $resposta = "";
+    $palavra = str_split(trim(readline()));
+    foreach ($palavra as $letra)
+        if (ctype_lower($letra))
+            $resposta .= $letra;
+    $resposta = strrev($resposta);
+    echo "$resposta\n";
 }
