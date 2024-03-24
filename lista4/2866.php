@@ -1,11 +1,16 @@
 <?php
-$C = readline();
-for ($i = 0; $i < $C; $i++) {
-    $resposta = "";
-    $palavra = str_split(trim(readline()));
-    foreach ($palavra as $letra)
-        if (ctype_lower($letra))
-            $resposta .= $letra;
-    $resposta = strrev($resposta);
-    echo "$resposta\n";
+$C = intval(fgets(STDIN));
+while ($C--) {
+    $palavra = trim(fgets(STDIN));
+    $tamanho = strlen($palavra);
+    $resposta = '';
+    $i = $tamanho - 1;
+    while ($tamanho--) {
+        if (ctype_lower($palavra[$i])) {
+            $resposta .= $palavra[$i--];
+        } else {
+            $i--;
+        }
+    }
+    echo $resposta . "\n";
 }
