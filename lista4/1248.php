@@ -7,7 +7,7 @@ while ($N--) {
     $total = array_merge($cafeManha, $almoco);
     $falta = array_diff($alimentosDieta, $total);
     sort($falta);
-    if (count(array_merge($total, $falta)) == count($alimentosDieta))
+    if (count(array_merge($total, $falta)) <= count($alimentosDieta))
         echo implode($falta) . "\n";
     else
         echo "CHEATER\n";
