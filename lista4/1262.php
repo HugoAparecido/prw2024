@@ -1,11 +1,10 @@
 <?php
-while ($R = strval(fgets(STDIN))) {
+while (true) {
+    $R = readline();
+    if ($R == false)
+        break;
     $P = intval(readline());
-    $R = str_split($R);
-    $processo = count(array_keys($R, "W"));
-    $R=implode("", $R);
-    $R = explode("W", $R);
-    // preg_match_all("/(W)|(R{1,$P})/", $R, $processos);
-    // $processos = count($processos[0]);
-    echo $processos. "\n";
+    for ($i = $P; $i > 0; $i--)
+        $R = str_replace(str_repeat('R', $i), 'W', $R);
+    echo strlen($R) . "\n";
 }
