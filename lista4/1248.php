@@ -1,18 +1,5 @@
 <?php
-function array_diff_multi($array1, $array2)
-{
-    $diff = array();
-    foreach ($array1 as $value) {
-        $key = array_search($value, $array2);
-        if ($key !== false) {
-            unset($array2[$key]);
-        } else {
-            $diff[] = $value;
-        }
-    }
-    return $diff;
-}
-function ImprovisoSort(&$array, $tamanho)
+function insertionSort(&$array, $tamanho)
 {
     for ($i = 1; $i < $tamanho; ++$i) {
         $tmp = $array[$i];
@@ -24,16 +11,40 @@ function ImprovisoSort(&$array, $tamanho)
         $array[$j + 1] = $tmp;
     }
 }
-$N = intval(readline());
-while ($N--) {
-    $alimentosDieta = str_split(readline());
-    $cafeManha = str_split(readline());
-    $almoco = str_split(readline());
-    $total = array_merge($cafeManha, $almoco);
-    $falta = array_diff_multi($alimentosDieta, $total);
-    ImprovisoSort($falta, count($falta));
-    if (count(array_merge($total, $falta)) == count($alimentosDieta))
-        echo implode($falta) . "\n";
-    else
+$N = intval(fgets(STDIN));
+for ($i = 0; $i < $N; ++$i) {
+    $precisaComer = array_fill(0, 26, 1);
+    $naoEstaDieta = array_fill(0, 26, 0);
+    $dieta = rtrim(fgets(STDIN), "\n");
+    $dietatamanho = strlen($dieta);
+    $jaComeu = rtrim(fgets(STDIN), "\n");
+    $jaComeutamanho = strlen($jaComeu);
+    $jaComeu .= rtrim(fgets(STDIN), "\n");
+    $jaComeutamanho = strlen($jaComeu);
+    for ($j = 0; $j < $dietatamanho; ++$j) {
+        $naoEstaDieta[ord($dieta[$j]) - ord('A')] = 1;
+    }
+    $cheater = 0;
+    for ($j = 0; $j < $jaComeutamanho && !$cheater; ++$j) {
+        $k = ord($jaComeu[$j]) - ord('A');
+
+        if (!($naoEstaDieta[$k] && $precisaComer[$k])) {
+            $cheater = 1;
+        } else {
+            $precisaComer[$k] = 0;
+        }
+    }
+    if ($cheater) {
         echo "CHEATER\n";
+    } else {
+        insertionSort($dieta, $dietatamanho);
+        $jantar = "";
+        for ($j = 0; $j < $dietatamanho; ++$j) {
+            if ($precisaComer[ord($dieta[$j]) - ord('A')]) {
+                $jantar .= $dieta[$j];
+            }
+        }
+
+        echo $jantar . "\n";
+    }
 }
