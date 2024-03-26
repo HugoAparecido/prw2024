@@ -1,18 +1,21 @@
 <?php
-$in= array_map('intval', explode(" ", readline()));
-$n=$in[0];
-$l=$in[1];
-$c=$in[2];
-$plavras = explode(" ", readline());
-$tamLinha = 0;
-$linhas = 0;
-for($i=0;$i<$n;$i++){
-    $tamLinha += strlen($palavras[$i])+1;
-    if($tamLinha>$c){
-        $linhas++;
-        $tamLinha = strlen($palavras[$i]+1);
+while (fscanf(STDIN, "%d%d%d", $N, $L, $C) !== false) {
+    $conto = fgets(STDIN);
+    $tamanhoConto = strlen($conto) - 1;
+    $caracteres = $salvamento = 0;
+    $linhas = $paginas = 1;
+    for ($i = 0; $i < $tamanhoConto; ++$i) {
+        if ($i && $conto[$i - 1] == ' ')
+            $salvamento = $i;
+        if ($caracteres == $C) {
+            ++$linhas;
+            if ($conto[$i] == ' ')
+                $caracteres = 0;
+            else
+                $caracteres = $i - $salvamento + 1;
+        } else
+            ++$caracteres;
     }
+    $paginas = ceil($linhas / $L);
+    printf("%d\n", $paginas);
 }
-echo "linhas".$linhas."\n";
-$pag = ceil($linhas/$l);
-echo $pag."\n";
