@@ -5,6 +5,7 @@ $l=$in[1];
 $c=$in[2];
 $plavras = explode(" ", readline());
 $tamLinha = 0;
+$linhas = 0;
 for($i=0;$i<$n;$i++){
     $tamLinha += strlen($palavras[$i])+1;
     if($tamLinha>$c){
@@ -12,4 +13,6 @@ for($i=0;$i<$n;$i++){
         $tamLinha = strlen($palavras[$i]+1);
     }
 }
-?>
+echo "linhas".$linhas."\n";
+$pag = ceil($linhas/$l);
+echo $pag."\n";
