@@ -1,11 +1,8 @@
 <?php
 while ($N = intval(fgets(STDIN))) {
-    $codigos = [];
     for ($i = 0; $i < $N; $i++)
-        array_push($codigos, strval(readline()));
-    sort($codigos);
-    $codigos = $codigos;
-    foreach ($codigos as $codigo) {
-        echo "$codigo\n";
-    }
+        $numeros[$i] = readline();
+    sort($numeros);
+    for ($i = 0; $i < $N; $i++)
+        echo strval($numeros[$i]) . "\n";
 }
