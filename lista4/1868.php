@@ -3,59 +3,68 @@ while (true) {
     $N = intval(readline());
     if ($N == 0)
         break;
-    // Inicialize a matriz vazia
-    $matriz = array();
-    // Preencha a matriz com valores (por exemplo, números sequenciais)
-    for ($i = 0; $i < $N; $i++) {
-        for ($j = 0; $j < $N; $j++) {
-            $matriz[$i][$j] = 'O';
-        }
-    }
+    $matriz = array_fill(0, $N, array_fill(0, $N, 'O')); // Inicialize a matriz com 'O's
     $direcoes = array(
         array(0, -1), // Esquerda
         array(-1, 0), // Cima
         array(0, 1),  // Direita
         array(1, 0)   // Baixo
     );
-    $direcao_atual = 2; // Comece indo para a esquerda
+    $direcao_atual = 2; // Comece indo para a direita
     $posicaoX = intval($N / 2);
     $posicaoY = intval($N / 2);
     $passou = [];
     // Exiba a matriz
     for ($c = 0; $c < $N * $N; $c++) {
         $matriz[$posicaoX][$posicaoY] = 'X';
-        for ($i = 0; $i < $N; $i++) {
-            for ($j = 0; $j < $N; $j++) {
-                echo $matriz[$i][$j] . " ";
-            }
-            echo "\n"; // Pula para a próxima linha
+        // Exibe a matriz
+        foreach ($matriz as $linha) {
+            echo implode("", $linha) . "\n";
         }
-        array_push($passou, strval($posicaoX) . strval($posicaoY));
-        print_r($passou);
+        array_push($passou, strval($posicaoX) . " " . strval($posicaoY));
         $matriz[$posicaoX][$posicaoY] = 'O';
         // Calcule a próxima posição
-        $posicaoX += $direcoes[$direcao_atual][0];
-        $posicaoY += $direcoes[$direcao_atual][1];
-        if ($direcao_atual == 2)
-            if (in_array(strval($posicaoX) . strval($posicaoY), $passou) || $posicaoY == $N - 1)
-                $direcao_atual = 1;
-            else
-                $direcao_atual = 2;
-        elseif ($direcao_atual == 1)
-            if (in_array(strval($posicaoX) . strval($posicaoY), $passou) || $posicaoX == $N - 1)
-                $direcao_atual = 0;
-            else
-                $direcao_atual = 1;
-        elseif ($direcao_atual == 0)
-            if (in_array(strval($posicaoX) . strval($posicaoY), $passou) || $posicaoY == 0)
-                $direcao_atual = 3;
-            else
-                $direcao_atual = 0;
-        elseif ($direcao_atual == 3)
-            if (in_array(strval($posicaoX) . strval($posicaoY), $passou) || $posicaoY == 0)
-                $direcao_atual = 0;
-            else
-                $direcao_atual = 3;
+        if ($c == 0) {
+            $posicaoX += $direcoes[$direcao_atual][0];
+            $posicaoY += $direcoes[$direcao_atual][1];
+        } else {
+            if ($direcao_atual == 2)
+                if (in_array(strval($posicaoX) . " " . strval($posicaoY), $passou) && !in_array(strval($posicaoX + $direcoes[1][0]) . " " . strval($posicaoY + $direcoes[1][1]), $passou)) {
+                    $direcao_atual = 1;
+                    $posicaoX += $direcoes[$direcao_atual][0];
+                    $posicaoY += $direcoes[$direcao_atual][1];
+                } else {
+                    $posicaoX += $direcoes[$direcao_atual][0];
+                    $posicaoY += $direcoes[$direcao_atual][1];
+                }
+            elseif ($direcao_atual == 1)
+                if (in_array(strval($posicaoX) . " " . strval($posicaoY), $passou) && !in_array(strval($posicaoX + $direcoes[0][0]) . " " . strval($posicaoY + $direcoes[0][1]), $passou)) {
+                    $direcao_atual = 0;
+                    $posicaoX += $direcoes[$direcao_atual][0];
+                    $posicaoY += $direcoes[$direcao_atual][1];
+                } else {
+                    $posicaoX += $direcoes[$direcao_atual][0];
+                    $posicaoY += $direcoes[$direcao_atual][1];
+                }
+            elseif ($direcao_atual == 0)
+                if (in_array(strval($posicaoX) . " " . strval($posicaoY), $passou) && !in_array(strval($posicaoX + $direcoes[3][0]) . " " . strval($posicaoY + $direcoes[3][1]), $passou)) {
+                    $direcao_atual = 3;
+                    $posicaoX += $direcoes[$direcao_atual][0];
+                    $posicaoY += $direcoes[$direcao_atual][1];
+                } else {
+                    $posicaoX += $direcoes[$direcao_atual][0];
+                    $posicaoY += $direcoes[$direcao_atual][1];
+                }
+            elseif ($direcao_atual == 3)
+                if (in_array(strval($posicaoX) . " " . strval($posicaoY), $passou) && !in_array(strval($posicaoX + $direcoes[2][0]) . " " . strval($posicaoY + $direcoes[2][1]), $passou)) {
+                    $direcao_atual = 2;
+                    $posicaoX += $direcoes[$direcao_atual][0];
+                    $posicaoY += $direcoes[$direcao_atual][1];
+                } else {
+                    $posicaoX += $direcoes[$direcao_atual][0];
+                    $posicaoY += $direcoes[$direcao_atual][1];
+                }
+        }
         echo "@\n";
     }
 }
