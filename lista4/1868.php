@@ -31,19 +31,31 @@ while (true) {
             echo "\n"; // Pula para a próxima linha
         }
         array_push($passou, strval($posicaoX) . strval($posicaoY));
+        print_r($passou);
         $matriz[$posicaoX][$posicaoY] = 'O';
         // Calcule a próxima posição
         $posicaoX += $direcoes[$direcao_atual][0];
         $posicaoY += $direcoes[$direcao_atual][1];
         if ($direcao_atual == 2)
-            if (!in_array(strval($posicaoX) . strval($posicaoY), $passou))
+            if (in_array(strval($posicaoX) . strval($posicaoY), $passou) || $posicaoY == $N - 1)
                 $direcao_atual = 1;
-            elseif ($direcao_atual == 1 && !in_array(strval($posicaoX) . strval($posicaoY), $passou))
-                $direcao_atual = 0;
-            elseif ($direcao_atual == 0 && !in_array(strval($posicaoX) . strval($posicaoY), $passou))
-                $direcao_atual = 3;
-            elseif ($direcao_atual == 3 && !in_array(strval($posicaoX) . strval($posicaoY), $passou))
+            else
                 $direcao_atual = 2;
+        elseif ($direcao_atual == 1)
+            if (in_array(strval($posicaoX) . strval($posicaoY), $passou) || $posicaoX == $N - 1)
+                $direcao_atual = 0;
+            else
+                $direcao_atual = 1;
+        elseif ($direcao_atual == 0)
+            if (in_array(strval($posicaoX) . strval($posicaoY), $passou) || $posicaoY == 0)
+                $direcao_atual = 3;
+            else
+                $direcao_atual = 0;
+        elseif ($direcao_atual == 3)
+            if (in_array(strval($posicaoX) . strval($posicaoY), $passou) || $posicaoY == 0)
+                $direcao_atual = 0;
+            else
+                $direcao_atual = 3;
         echo "@\n";
     }
 }
