@@ -29,8 +29,12 @@ while ($i < count($entrada[0])) {
     array_push($numerosEntrada, implode("", $array));
     $i += 4;
 }
+$numeroMostrado = "";
 foreach ($numerosEntrada as $numero) {
-    echo $numeros[$numero] . "\n";
+    $numeroMostrado .= $numeros[$numero];
+}
+if (intval($numeroMostrado) % 6 == 0) {
+    echo "\n";
 }
 print_r($numerosEntrada);
 print_r($entrada);
