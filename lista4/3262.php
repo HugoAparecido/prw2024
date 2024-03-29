@@ -1,8 +1,11 @@
 <?php
 $N = 5;
-$entrada = [];
 while ($N--) {
-    array_push($entrada, str_split(readline()));
+    $entrada[] = str_split(readline());
+}
+foreach ($entrada as $linha) {
+    array_pop($linha);
+    array_pop($linha);
 }
 $numeros = [
     '**** ** ** ****' => 0,
@@ -31,10 +34,10 @@ while ($i < count($entrada[0])) {
 }
 $numeroMostrado = "";
 foreach ($numerosEntrada as $numero) {
-    $numeroMostrado .= $numeros[$numero];
+    if (array_key_exists($numero, $numeros))
+        $numeroMostrado .= $numeros[$numero];
 }
-if (intval($numeroMostrado) % 6 == 0) {
-    echo "\n";
-}
-print_r($numerosEntrada);
-print_r($entrada);
+if (intval($numeroMostrado) % 6 == 0 && count($numerosEntrada) == strlen($numeroMostrado))
+    echo "BEER!!\n";
+else
+    echo "BOOM!!\n";
