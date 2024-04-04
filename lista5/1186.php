@@ -10,8 +10,8 @@ for ($i = 0; $i < 12; $i++)
         echo "$coluna ";
     echo "\n";
 }*/
-for ($i = 1; $i < 12; $i++)
-    for ($j = 0; $j < $i; $j++)
+for ($i = 0; $i < 12; $i++)
+    for ($j = 11; $j > 11 - $i; $j--)
         $operacao += $matriz[$i][$j];
 if ($operacaoChar == 'M')
     $operacao /= 66;

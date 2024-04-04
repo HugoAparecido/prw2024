@@ -11,7 +11,7 @@ for ($i = 0; $i < 12; $i++)
     echo "\n";
 }*/
 for ($i = 0; $i < 12; $i++)
-    for ($j = $i+1; $j < 12; $j++)
+    for ($j = $i + 1; $j < 12; $j++)
         $operacao += $matriz[$i][$j];
 if ($operacaoChar == 'M')
     $operacao /= 66;
