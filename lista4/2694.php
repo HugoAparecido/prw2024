@@ -9,7 +9,7 @@ for ($i = 0; $i < $N; $i++) {
     else
         $num3 = array_slice($entrada, 12, 2);
     if (intval($num3[0]) == NAN)
-        array_shift($num3);
+        array_shift($num3); //retira o primeiro elemento do array
     $num3 = intval(implode($num3));
     echo ($num1 + $num2 + $num3) . "\n";
 }

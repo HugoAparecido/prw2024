@@ -14,7 +14,7 @@ while (true) {
             $maior = strlen($linha);
     }
     foreach ($entrada as $linha) {
-        $linha = str_pad($linha, $maior, " ", STR_PAD_LEFT);
+        $linha = str_pad($linha, $maior, " ", STR_PAD_LEFT); // Preenche os espaços restantes da string com espaço para a esquerda
         echo $linha . "\n";
     }
     $N = intval(readline());

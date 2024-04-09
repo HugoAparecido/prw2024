@@ -7,7 +7,7 @@ while ($N--) {
     $stringInicial = str_split($stringInicial);
     $stringFinal = str_split($stringFinal);
     for ($i = 0; $i < count($stringInicial); $i++) {
-        $letra = array_search($stringInicial[$i], $letras);
+        $letra = array_search($stringInicial[$i], $letras); // pesquisa um valor e retorna a posição dele em um array
         while ($stringInicial[$i] != $stringFinal[$i]) {
             $resposta++;
             if ($letra == 25)

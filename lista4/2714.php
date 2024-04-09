@@ -6,7 +6,7 @@ for ($i = 0; $i < $N; $i++) {
     if (count($RA) < 20)
         $resposta = "INVALID DATA\n";
     else {
-        $RAa = implode("", array_slice($RA, 0, 2));
+        $RAa = implode("", array_slice($RA, 0, 2)); //Extrai uma fatia do array (array, posição, tamanho)
         if ($RAa != "RA")
             $resposta = "INVALID DATA\n";
         else {
