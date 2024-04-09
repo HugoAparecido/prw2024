@@ -16,6 +16,6 @@ while (fscanf(STDIN, "%d%d%d", $N, $L, $C) !== false) {
         } else
             ++$caracteres;
     }
-    $paginas = ceil($linhas / $L);
+    $paginas = ceil($linhas / $L); //arredonda para cima a divisão
     printf("%d\n", $paginas);
 }
